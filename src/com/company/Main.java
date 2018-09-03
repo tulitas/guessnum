@@ -1,6 +1,7 @@
 package com.company;
+
 import javax.swing.*;
-import  java.awt.FlowLayout;
+import java.awt.FlowLayout;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -21,7 +22,7 @@ public class Main {
             //System.out.println(myNum);
             boolean userLost = true;
             //kol-vo popitok
-            for (int i = 1; i < 11; i++) {
+            for (int i = 1; i < 3; i++) {
                 System.out.println("Попытка #" + i);
                 //sprasivaem 4islo
                 int userNum = scan.nextInt();
@@ -41,22 +42,23 @@ public class Main {
                 System.out.println("Проиграл!");
             }
             //vopros na prodolzenie igri
+
             System.out.println(" Ещё раз? ");
             System.out.println(" Y ? " + " N ? ");
             answer = scan.next();
         } while (answer.equals("Y"));
-        do {
+        /*do {
             System.out.println("Пока, очень жаль!");
             break;
-        } while (answer.equals("N"));
-        /*if (answer == "N"){
-            System.out.println("O4en zal");
-        }
-            else {
-                System.out.println("O6ibka");
-            }*/
+        } while (answer.equals("N"));*/
+        if (answer.equals("N")) {
+            System.out.println("Очень жаль");
+        } else {
+            System.out.println("Ошибочка");
         }
     }
+}
+
 
 
 
