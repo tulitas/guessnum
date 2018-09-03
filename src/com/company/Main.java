@@ -1,13 +1,17 @@
 package com.company;
-
+import javax.swing.*;
+import  java.awt.FlowLayout;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
+    JButton myButton = new JButton();
+    JFrame myFrame = new JFrame();
     static Random rand = new Random();
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
+
         String answer;
         //na4alo cikla, kotorij budet povtorjatsa
         do {
@@ -45,7 +49,14 @@ public class Main {
             System.out.println("Пока, очень жаль!");
             break;
         } while (answer.equals("N"));
+        /*if (answer == "N"){
+            System.out.println("O4en zal");
+        }
+            else {
+                System.out.println("O6ibka");
+            }*/
+        }
     }
-}
+
 
 
