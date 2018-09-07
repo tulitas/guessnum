@@ -11,7 +11,8 @@ public class Main {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-
+        int userScore = 0;
+        int myScore = 0;
         String answer;
         //na4alo cikla, kotorij budet povtorjatsa
         do {
@@ -21,13 +22,18 @@ public class Main {
             //System.out.println(myNum);
             boolean userLost = true;
             //kol-vo popitok
-            for (int i = 1; i < 3; i++) {
+            for (int i = 1; i < 10; i++) {
                 System.out.println("Попытка #" + i);
                 //sprasivaem 4islo
                 int userNum = askNum();
+
                 //varianti otveta
+
                 if (myNum == userNum) {
+                    userScore += 1;
+
                     System.out.println(" Победа!");
+
                     userLost = false;
                     break;
                 } else if (myNum < userNum) {
@@ -37,15 +43,26 @@ public class Main {
                 }
             }
             if (userLost) {
+                myScore += 1;
                 System.out.println("Проиграл!");
+
             }
+
+
             //vopros na prodolzenie igri
+
+
+            System.out.println("Твой счёт " + userScore + " Мой счёт " + myScore);
+
 
             System.out.println(" Ещё раз ? y / n ");
             answer = askYN();
+
+
         } while (answer.equals("y"));
         System.out.println("Пока!");
     }
+
 
     //otdelnij metod, kotorij rabotaet s osnovnim
     //esli varian otveta ne "n" i ne "y"
@@ -82,9 +99,13 @@ public class Main {
                 return answer;
             }
         } while (true);
+
+
     }
 
+
 }
+
 
 
 
