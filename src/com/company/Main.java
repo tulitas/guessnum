@@ -11,12 +11,20 @@ public class Main {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
+        System.out.println("Как тебя зовут?");
+        Scanner in = new Scanner(System.in);
+        String playername = scan.next();
+        System.out.println("Привет " + playername);
+
         int userScore = 0;
         int myScore = 0;
+
+
         String answer;
         //na4alo cikla, kotorij budet povtorjatsa
         do {
             //generiruet slu4ainoe 4islo
+            System.out.println("Введи число!");
             int myNum = rand.nextInt(100) + 1;
             //esli zakomentit` sled stroku, 4islo ne vidno
             //System.out.println(myNum);
@@ -37,9 +45,9 @@ public class Main {
                     userLost = false;
                     break;
                 } else if (myNum < userNum) {
-                    System.out.println(" Моё число < Твоё число");
+                    System.out.println(" Моё число < " + playername);
                 } else {
-                    System.out.println(" Моё число > Твоё число");
+                    System.out.println(" Моё число > " + playername);
                 }
             }
             if (userLost) {
@@ -52,7 +60,7 @@ public class Main {
             //vopros na prodolzenie igri
 
 
-            System.out.println("Твой счёт " + userScore + " Мой счёт " + myScore);
+            System.out.println( playername +  userScore + " Мой счёт " + myScore);
 
 
             System.out.println(" Ещё раз ? y / n ");
@@ -60,7 +68,7 @@ public class Main {
 
 
         } while (answer.equals("y"));
-        System.out.println("Пока!");
+        System.out.println("Пока! " + playername);
     }
 
 
