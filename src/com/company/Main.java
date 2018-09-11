@@ -1,28 +1,30 @@
 package com.company;
 
 
-import java.util.InputMismatchException;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
     static Random rand = new Random();
     static Scanner scan = new Scanner(System.in);
+    static List<GameResult> results = new ArrayList<>();
+
 
     public static void main(String[] args) {
-        System.out.println("Как тебя зовут?");
-        Scanner in = new Scanner(System.in);
-        String playername = scan.next();
-        System.out.println("Привет " + playername);
+
 
         int userScore = 0;
         int myScore = 0;
 
-
+        String playername;
         String answer;
         //na4alo cikla, kotorij budet povtorjatsa
         do {
+            System.out.println("Как тебя зовут?");
+            playername = scan.next();
+            Scanner in = new Scanner(System.in);
+            System.out.println("Привет " + playername);
+            long t1 = System.currentTimeMillis();
             //generiruet slu4ainoe 4islo
             System.out.println("Введи число!");
             int myNum = rand.nextInt(100) + 1;
@@ -41,8 +43,17 @@ public class Main {
                     userScore += 1;
 
                     System.out.println(" Победа!");
+                    long t2 = System.currentTimeMillis();
+                    long t = (t2 - t1) / 1000;
+
 
                     userLost = false;
+                    //sohranjaem rezultat
+                    GameResult r = new GameResult();
+                    r.name = playername;
+                    r.triesCount = i;
+                    r.timetries = t;
+                    results.add(r);
                     break;
                 } else if (myNum < userNum) {
                     System.out.println(" Моё число < " + playername);
@@ -60,7 +71,7 @@ public class Main {
             //vopros na prodolzenie igri
 
 
-            System.out.println( playername +  userScore + " Мой счёт " + myScore);
+            System.out.println(playername + " " + userScore + " Мой счёт " + myScore);
 
 
             System.out.println(" Ещё раз ? y / n ");
@@ -68,7 +79,16 @@ public class Main {
 
 
         } while (answer.equals("y"));
+        //pokazivaem rezultat, sozdajom metod
+        showResults();
         System.out.println("Пока! " + playername);
+    }
+
+    //pokazivaem rezultat
+    private static void showResults() {
+        for (GameResult r : results) {
+            System.out.println(r.name + " -> " + r.triesCount + " sek " + r.timetries);
+        }
     }
 
 
