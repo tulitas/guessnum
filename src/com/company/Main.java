@@ -8,6 +8,7 @@ import java.util.*;
 
 public class Main {
 
+
     static Random rand = new Random();
     static Scanner scan = new Scanner(System.in);
     static List<GameResult> results = new ArrayList<>();
@@ -114,9 +115,9 @@ public class Main {
         File file = new File("Top_scores.txt");
         try (PrintWriter out = new PrintWriter(file)) {
 
-
             for (GameResult r : results) {
                 out.printf("%s %d %d\n", r.name, r.triesCount, r.timetries);
+                String Str = r.name;
 
 
             }
@@ -144,7 +145,34 @@ public class Main {
                         .thenComparingLong(r -> r.timetries))
                 .limit(5)
                 .forEach(r -> {
-                    System.out.printf("%s %d %.2f sek\n", r.name, r.triesCount, r.timetries / 1000.0);
+                    System.out.printf("%s %d %.2f sek\n", r.name,
+                            r.triesCount, r.timetries / 1000.0);
+//int str = r.name.length();
+
+
+
+                    int str = r.name.length();
+                    for (Integer i: str) {
+                        if(i < min);
+                        i = min;
+                        if (i > max);
+                        i = max;}
+
+
+                    //toze neponjatno 4to s stolbikami
+                   // String max = Collections.max(r.name, Comparator.comparing(s -> s.lenght()));
+
+                    //pitalsja virovnit` stolbiki v txt faile
+
+//                    int index = 0;
+//                    for (int i = 0; i < r.name.length(); i++) {
+//                        if (r.name.length() > str) {
+//                            str = r.name.length();
+//                            index = i;
+//                        }
+//                    }
+//System.out.println(index);
+
                 });
     }
 
