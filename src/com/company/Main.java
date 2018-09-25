@@ -139,42 +139,46 @@ public class Main {
 //    }
     //pokazivaem rezultat samij prostoj i korotkij metod
     private static void showResults() {
+        //pravilnij variant viravnivanija
+        int maxLen = findMaxNameLen();
+
         //vivodit tolko 5 rezulttov i ispravljaet esli ih <5, sortiruem po popitkam i vremeni
         results.stream()
                 .sorted(Comparator.<GameResult>comparingInt(r -> r.triesCount)
                         .thenComparingLong(r -> r.timetries))
                 .limit(5)
                 .forEach(r -> {
-                    System.out.printf("%s %d %.2f sek\n", r.name,
+                    //stroka otnositsja k viravnivaniju
+                    System.out.print(r.name);
+                    for (int i = 0; i < (maxLen - r.name.length()); i++) {
+                        System.out.print("_");
+                    }
+
+                    System.out.printf(" %d %.2f sek\n",
                             r.triesCount, r.timetries / 1000.0);
-//int str = r.name.length();
 
-
-
-                    int str = r.name.length();
-                    for (Integer i: str) {
-                        if(i < min);
-                        i = min;
-                        if (i > max);
-                        i = max;}
-
-
-                    //toze neponjatno 4to s stolbikami
-                   // String max = Collections.max(r.name, Comparator.comparing(s -> s.lenght()));
-
-                    //pitalsja virovnit` stolbiki v txt faile
-
-//                    int index = 0;
-//                    for (int i = 0; i < r.name.length(); i++) {
-//                        if (r.name.length() > str) {
-//                            str = r.name.length();
-//                            index = i;
-//                        }
-//                    }
-//System.out.println(index);
 
                 });
     }
+
+    //toze viravnivanie drugoj variant
+    private static int findMaxNameLen() {
+        return results.stream()
+                .map(r -> r.name)
+                .map(n -> n.length())
+                .max(Comparator.naturalOrder())
+                .get();
+    }
+    //viravnivanie
+//    }private static int findMaxNameLen() {
+//        int result = 0;
+//        for (GameResult r : results) {
+//            if (result < r.name.length()) {
+//                result = r.name.length();
+//            }
+//        }
+//        return result;
+//    }
 
 
     //otdelnij metod, kotorij rabotaet s osnovnim
